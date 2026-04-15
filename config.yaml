@@ -1,0 +1,55 @@
+chatbot:
+  api_endpoint: http://localhost:5000/chat
+  method: POST
+  request_format:
+    key: user_message
+  response_format:
+    key: reply
+  timeout: 30
+dashboard:
+  host: 0.0.0.0
+  port: 8501
+datasets:
+  merged_data: data/merged_dataset.json
+  min_real_prompts: 50
+  real_user_data: data/real_user_data.json
+  synthetic_data: data/synthetic_data.json
+domain:
+  name: Banking
+  supported_domains:
+  - Education
+  - Banking
+  - Retail
+  - Airline
+  - General Conversational Assistant
+evaluation:
+  pipeline: double
+  results_file: data/evaluation_results.json
+logging:
+  file: logs/system_logs.json
+  level: INFO
+metrics:
+  weights:
+    critical: 0.5
+    minor: 0.2
+    moderate: 0.3
+ollama:
+  base_url: http://localhost:11434
+  context_turns: 2
+  fallback_model: qwen2.5:3b-instruct-q4_K_M
+  parameters:
+    max_tokens: 512
+    temperature: 0.2
+  primary_model: llama3.1:8b-instruct-q4_K_M
+  retries: 3
+  retry_strategy: exponential_backoff
+  secondary_model: qwen2.5:7b-instruct-q4_K_M
+  timeout: 180
+policies:
+  file: policies/domain_policies.json
+system:
+  cpu_only: true
+  max_ram_gb: 16
+  mode: offline
+  name: Domain Policy Governance & AI Evaluation Platform
+  version: 1.0.0
